@@ -1,5 +1,6 @@
 package es.ulpgc.eite.clean.mvp.sample.dummy;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -40,8 +41,9 @@ public class DummyView
    * Method that initialized MVP objects
    * {@link super#onResume(Class, Object)} should always be called
    */
+  @SuppressLint("MissingSuperCall")
   @Override
-  protected void onResume() {
+  protected void onResume(){
     super.onResume(DummyPresenter.class, this);
   }
 

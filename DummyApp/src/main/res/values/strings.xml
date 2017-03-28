@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Dummy</string>
+    <string name="app_name">SEC</string>
     <string name="dummy_screen_title">Dummy</string>
+    <string name="main_screen_title">SEC</string>
     <string name="action_settings">Settings</string>
     <string name="screen_text">Text</string>
     <string name="button_label">Button</string>
