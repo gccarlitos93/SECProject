@@ -2,7 +2,7 @@ package es.ulpgc.eite.clean.mvp.sample.main;
 
 
 import es.ulpgc.eite.clean.mvp.GenericPresenter;
-
+//Extender e implementar
 public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.PresenterToModel, Main.ModelToPresenter, MainModel>
         implements Main.ViewToPresenter, Main.ModelToPresenter,  Main.ToMain {
 
