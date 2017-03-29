@@ -21,11 +21,13 @@
         android:layout_alignEnd="@+id/mainText" />
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_label"
         android:id="@+id/searchButton"
-        android:layout_marginBottom="78dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorText"
+        android:layout_marginBottom="60dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
@@ -35,9 +37,9 @@
         android:layout_marginBottom="20dp"
         android:id="@+id/mainImage"
         android:src="@drawable/sec"
-        android:layout_marginTop="50dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_above="@+id/mainText"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
