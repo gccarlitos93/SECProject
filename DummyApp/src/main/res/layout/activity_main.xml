@@ -6,7 +6,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lorem ipsum dolor sit amet lalsl slkds slkd slkdlsdk."
+        android:text="@string/screen_text"
         android:id="@+id/mainText"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
@@ -21,9 +21,9 @@
         android:layout_alignEnd="@+id/mainText" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Buscar"
+        android:text="@string/button_label"
         android:id="@+id/searchButton"
         android:layout_marginBottom="78dp"
         android:layout_alignParentBottom="true"
@@ -34,9 +34,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:id="@+id/mainImage"
-
-        android:layout_alignStart="@+id/mainText"
-        android:layout_alignEnd="@+id/mainText"
+        android:src="@drawable/sec"
+        android:layout_marginTop="50dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:layout_above="@+id/mainText"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
