@@ -39,6 +39,7 @@ public interface Main {
      */
     interface PresenterToModel extends Model<ModelToPresenter> {
 
+        String getSearchBtnLabel();
     }
 
     /**
