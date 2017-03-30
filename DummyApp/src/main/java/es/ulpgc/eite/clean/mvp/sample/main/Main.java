@@ -32,6 +32,7 @@ public interface Main {
         void hideToolbar();
         void showProgress();
         void hideProgress();
+        void setSearchBtnLabel(String txt);
     }
 
     /**

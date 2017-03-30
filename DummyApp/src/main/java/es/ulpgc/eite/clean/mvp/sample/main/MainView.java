@@ -57,4 +57,9 @@ public class MainView extends GenericActivity<Main.PresenterToView, Main.ViewToP
     public void hideProgress() {
 
     }
+
+    @Override
+    public void setSearchBtnLabel(String txt){
+        search.setText(txt);
+    }
 }
