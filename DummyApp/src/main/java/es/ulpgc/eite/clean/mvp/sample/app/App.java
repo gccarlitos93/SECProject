@@ -18,11 +18,9 @@ public class App extends Application implements Mediator, Navigator {
   @Override
   public void onCreate() {
     super.onCreate();
-    toDummyState = new DummyState();
-    toDummyState.toolbarVisibility = false;
-    toDummyState.textVisibility = false;
-
     toMainState = new MainState();
+    toMainState.toolbarVisibility = false;
+
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
