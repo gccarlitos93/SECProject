@@ -14,7 +14,8 @@ import android.widget.TextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
 
-public class MainView extends GenericActivity<Main.PresenterToView, Main.ViewToPresenter, MainPresenter>
+public class MainView
+        extends GenericActivity<Main.PresenterToView, Main.ViewToPresenter, MainPresenter>
         implements Main.PresenterToView {
 
     private Button search;
@@ -23,9 +24,8 @@ public class MainView extends GenericActivity<Main.PresenterToView, Main.ViewToP
     private Spinner sports;
     private Toolbar toolbar;
 
-    @SuppressLint("MissingSuperCall")
-    @Override
 
+    @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -34,9 +34,23 @@ public class MainView extends GenericActivity<Main.PresenterToView, Main.ViewToP
         search = (Button)findViewById(R.id.searchButton);
         mainText = (TextView)findViewById(R.id.mainText);
         sports = (Spinner)findViewById(R.id.spinner);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
+    /**
+     * Method that initialized MVP objects
+     * {@link super#onResume(Class, Object)} should always be called
+     */
+    @SuppressLint("MissingSuperCall")
+    @Override
+    protected void onResume() {
+        super.onResume(MainPresenter.class, this);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    // Presenter To View /////////////////////////////////////////////////////////////
 
     @Override
     public void finishScreen() {
