@@ -43,6 +43,7 @@ public interface Main {
         void showProgress();
         void hideProgress();
         void setSearchBtnLabel(String txt);
+        void setStartTxt(String txt);
     }
 
     /**
@@ -51,6 +52,7 @@ public interface Main {
     interface PresenterToModel extends Model<ModelToPresenter> {
 
         String getSearchBtnLabel();
+        String getMainText();
     }
 
     /**

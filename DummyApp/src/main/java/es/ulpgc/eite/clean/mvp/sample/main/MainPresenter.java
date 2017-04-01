@@ -96,6 +96,7 @@ public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.P
 
         if(isViewRunning()){
             getView().setSearchBtnLabel(getModel().getSearchBtnLabel());
+            getView().setStartTxt(getModel().getMainText());
 
 
         }

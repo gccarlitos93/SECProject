@@ -19,7 +19,7 @@ public class MainView
         implements Main.PresenterToView {
 
     private Button search;
-    private TextView mainText;
+    private TextView startTxt;
     private ImageView image;
     private Spinner sports;
     private Toolbar toolbar;
@@ -32,11 +32,11 @@ public class MainView
 
         image = (ImageView)findViewById(R.id.mainImage);
         search = (Button)findViewById(R.id.searchButton);
-        mainText = (TextView)findViewById(R.id.mainText);
+        startTxt = (TextView)findViewById(R.id.mainText);
         sports = (Spinner)findViewById(R.id.spinner);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
     }
 
     /**
@@ -75,5 +75,10 @@ public class MainView
     @Override
     public void setSearchBtnLabel(String txt){
         search.setText(txt);
+    }
+
+    @Override
+    public void setStartTxt(String txt){
+        startTxt.setText(txt);
     }
 }
