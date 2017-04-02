@@ -29,6 +29,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".master.MasterView"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
     </application>
 
 </manifest>
