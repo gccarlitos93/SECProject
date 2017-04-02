@@ -12,17 +12,15 @@ import es.ulpgc.eite.clean.mvp.sample.main.Main;
 public class App extends Application implements Mediator, Navigator {
 
   private DummyState toDummyState, dummyToState;
-  private MainState toMainState;
+  private MainState toMainState, mainToState;
 
 
   @Override
   public void onCreate() {
     super.onCreate();
-    toDummyState = new DummyState();
-    toDummyState.toolbarVisibility = false;
-    toDummyState.textVisibility = false;
-
     toMainState = new MainState();
+    toMainState.toolbarVisibility = false;
+
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -63,6 +61,11 @@ public class App extends Application implements Mediator, Navigator {
       presenter.destroyView();
     }
 
+  }
+
+  @Override
+  public void goToMasterScreen(Main.MainToMaster presenter) {
+    
   }
 
   ///////////////////////////////////////////////////////////////////////////////////

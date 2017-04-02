@@ -21,7 +21,7 @@ public class DummyView
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_dummy);
+    setContentView(R.layout.activity_main);
 
     text = (TextView) findViewById(R.id.text);
 
