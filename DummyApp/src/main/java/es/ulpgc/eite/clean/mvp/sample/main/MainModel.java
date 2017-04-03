@@ -5,7 +5,7 @@ import es.ulpgc.eite.clean.mvp.GenericModel;
 
 public class MainModel extends GenericModel<Main.ModelToPresenter> implements Main.PresenterToModel {
 
-    private String searchBtnLabel, mainText, title;
+    private String intoBtnLabel, mainText, title;
 
 
     /**
@@ -18,7 +18,7 @@ public class MainModel extends GenericModel<Main.ModelToPresenter> implements Ma
     public void onCreate(Main.ModelToPresenter presenter){
         super.onCreate(presenter);
 
-        searchBtnLabel = "Buscar";
+        intoBtnLabel = "Buscar";
         mainText = "Sport Events Canary. Encuentra los eventos de tus deportes favoritos con un par de " +
                    "clicks. Recibe toda la información que necesitas sobre ese partido al que quieres asistir o esa " +
                    "carrera que tanto te gusta participar. Accede a los enlaces para inscribirte o compar las entradas.";
@@ -32,8 +32,8 @@ public class MainModel extends GenericModel<Main.ModelToPresenter> implements Ma
 
 
     @Override
-    public String getSearchBtnLabel(){
-        return searchBtnLabel;
+    public String getIntoBtnLabel(){
+        return intoBtnLabel;
     }
     @Override
     public String getMainText(){

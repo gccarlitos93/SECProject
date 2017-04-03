@@ -37,7 +37,7 @@ public interface Main {
      */
     interface ViewToPresenter extends Presenter<PresenterToView> {
 
-        void onSearchBtnClicked();
+        void onIntoBtnClicked();
         //void onStartingView();
     }
 
@@ -49,7 +49,7 @@ public interface Main {
         void hideToolbar();
         void showProgress();
         void hideProgress();
-        void setSearchBtnLabel(String txt);
+        void setIntoBtnLabel(String txt);
         void setStartTxt(String txt);
         void setTitleTxt(String txt);
     }
@@ -59,7 +59,7 @@ public interface Main {
      */
     interface PresenterToModel extends Model<ModelToPresenter> {
 
-        String getSearchBtnLabel();
+        String getIntoBtnLabel();
         String getMainText();
         String getTitleText();
     }

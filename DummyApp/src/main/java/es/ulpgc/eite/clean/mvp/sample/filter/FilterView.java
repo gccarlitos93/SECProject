@@ -2,8 +2,11 @@ package es.ulpgc.eite.clean.mvp.sample.filter;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
@@ -15,9 +18,9 @@ public class FilterView extends GenericActivity<Filter.PresenterToView, Filter.V
         implements Filter.PresenterToView {
 
     private Toolbar toolbar;
-    //private Button btnSayByeView, btnGoToHelloView;
-    //private TextView byeMsgView;
-    //private ProgressBar progressView;
+    private TextView filterIsland, filterSport;
+    private Spinner islandChoice, sportChoice;
+    private FloatingActionButton search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

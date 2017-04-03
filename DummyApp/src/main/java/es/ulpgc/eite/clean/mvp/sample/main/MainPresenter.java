@@ -84,7 +84,7 @@ public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.P
     // View To Presenter /////////////////////////////////////////////////////////////
 
     @Override
-    public void onSearchBtnClicked() {
+    public void onIntoBtnClicked() {
         Navigator app = (Navigator) getView().getApplication();
         app.goToFilterScreen(this);
     }
@@ -102,7 +102,7 @@ public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.P
         Log.d(TAG, "calling onScreenStarted()");
 
         if(isViewRunning()){
-            getView().setSearchBtnLabel(getModel().getSearchBtnLabel());
+            getView().setIntoBtnLabel(getModel().getIntoBtnLabel());
             getView().setStartTxt(getModel().getMainText());
             getView().setTitleTxt(getModel().getTitleText());
 
