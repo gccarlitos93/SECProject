@@ -27,8 +27,7 @@ public class FilterView extends GenericActivity<Filter.PresenterToView, Filter.V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
 
-        //byeMsgView = (TextView) findViewById(R.id.byeMsg);
-        //progressView = (ProgressBar) findViewById(R.id.progressBar);
+        filt
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
