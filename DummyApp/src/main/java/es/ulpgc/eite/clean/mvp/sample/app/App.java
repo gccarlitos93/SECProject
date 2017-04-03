@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
 import es.ulpgc.eite.clean.mvp.sample.dummy.DummyView;
+import es.ulpgc.eite.clean.mvp.sample.filter.Filter;
 import es.ulpgc.eite.clean.mvp.sample.filter.FilterView;
 import es.ulpgc.eite.clean.mvp.sample.main.Main;
 
