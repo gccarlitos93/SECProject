@@ -18,7 +18,7 @@ public class FilterView extends GenericActivity<Filter.PresenterToView, Filter.V
         implements Filter.PresenterToView {
 
     private Toolbar toolbar;
-    private TextView filterIsland, filterSport;
+    private TextView filterIsland, filterSport, filterText;
     private Spinner islandChoice, sportChoice;
     private FloatingActionButton search;
 
@@ -27,27 +27,17 @@ public class FilterView extends GenericActivity<Filter.PresenterToView, Filter.V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
 
-        filt
+        filterText = (TextView)findViewById(R.id.filterText);
+
+        filterIsland = (TextView)findViewById(R.id.islandLabel);
+        islandChoice = (Spinner)findViewById(R.id.islandSpinner);
+
+        filterSport = (TextView)findViewById(R.id.sportLabel);
+        sportChoice = (Spinner)findViewById(R.id.sportSpinner);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        //btnSayByeView = (Button) findViewById(R.id.btnSayBye);
-        //btnSayByeView.setOnClickListener(new View.OnClickListener() {
-           /* @Override
-            public void onClick(View view) {
-                getPresenter().onSayByeBtnClicked();
-            }
-        });*/
-
-        /*btnGoToHelloView = (Button) findViewById(R.id.btnGoToHello);
-        btnGoToHelloView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getPresenter().onGoToHelloBtnClicked();
-            }
-        });*/
 
     }
 
@@ -75,39 +65,16 @@ public class FilterView extends GenericActivity<Filter.PresenterToView, Filter.V
         toolbar.setVisibility(View.GONE);
     }
 
-
-    /*@Override
-    public void hideByeMsg() {
-        byeMsgView.setVisibility(View.INVISIBLE);
-    }
-
     @Override
-    public void showByeMsg() {
-        byeMsgView.setVisibility(View.VISIBLE);
+    public void setFilterText(String txt){
+        filterText.setText(txt);
     }
-
-    public void setByeMsg(String txt) {
-        byeMsgView.setText(txt);
-    }
-
     @Override
-    public void setSayByeBtnLabel(String txt) {
-        btnSayByeView.setText(txt);
+    public void setIslandLabel(String txt){
+        filterIsland.setText(txt);
     }
-
     @Override
-    public void setGoToHelloBtnLabel(String txt) {
-        btnGoToHelloView.setText(txt);
+    public void setSportLabel(String txt){
+        filterSport.setText(txt);
     }
-
-    @Override
-    public void showProgress() {
-        progressView.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void hideProgress() {
-        progressView.setVisibility(View.INVISIBLE);
-    }
-}*/
 }

@@ -8,8 +8,7 @@ import es.ulpgc.eite.clean.mvp.GenericModel;
 public class FilterModel extends GenericModel<Filter.ModelToPresenter>
         implements Filter.PresenterToModel {
 
-    //private String byeMsgText;
-    //private String sayByeBtnLabel;
+    private String filterText, islandLabel, sportLabel;
 
 
     /**
@@ -21,6 +20,10 @@ public class FilterModel extends GenericModel<Filter.ModelToPresenter>
     @Override
     public void onCreate(Filter.ModelToPresenter presenter) {
         super.onCreate(presenter);
+
+        filterText = "Ahora solo tienes que elegir en que isla buscas el evento deportivo y con que deporte está relacionado";
+        islandLabel = "Isla";
+        sportLabel = "Deporte";
 
 
     }
@@ -40,7 +43,18 @@ public class FilterModel extends GenericModel<Filter.ModelToPresenter>
     // Presenter To Model ////////////////////////////////////////////////////////////
 
 
-
+    @Override
+    public String getFilterText(){
+        return filterText;
+    }
+    @Override
+    public String getIslandLabel(){
+        return islandLabel;
+    }
+    @Override
+    public String getSportLabel(){
+        return sportLabel;
+    }
 
 
 

@@ -127,8 +127,9 @@ public class FilterPresenter extends GenericPresenter<Filter.PresenterToView, Fi
         Log.d(TAG, "calling onScreenStarted()");
 
         if(isViewRunning()) {
-            /*getView().setGoToHelloBtnLabel(getModel().getGoToHelloBtnLabel());
-            getView().setSayByeBtnLabel(getModel().getSayByeBtnLabel());*/
+            getView().setFilterText(getModel().getFilterText());
+            getView().setIslandLabel(getModel().getIslandLabel());
+            getView().setSportLabel(getModel().getSportLabel());
         }
 
         //textVisible = helloTextVisible;

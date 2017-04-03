@@ -48,6 +48,9 @@ public interface Filter {
         void hideToolbar();
         //void showProgress();
         //void hideProgress();
+        void setFilterText(String txt);
+        void setIslandLabel(String txt);
+        void setSportLabel(String txt);
     }
 
     /**
@@ -55,6 +58,9 @@ public interface Filter {
      */
     interface PresenterToModel extends Model<ModelToPresenter> {
 
+        String getFilterText();
+        String getIslandLabel();
+        String getSportLabel();
     }
 
     /**
