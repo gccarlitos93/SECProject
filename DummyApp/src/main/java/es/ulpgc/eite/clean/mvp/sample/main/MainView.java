@@ -19,9 +19,9 @@ public class MainView
         implements Main.PresenterToView {
 
     private Button search;
+    private TextView title;
     private TextView startTxt;
     private ImageView image;
-    private Spinner sports;
     private Toolbar toolbar;
 
 
@@ -30,12 +30,12 @@ public class MainView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        image = (ImageView)findViewById(R.id.mainImage);
-        search = (Button)findViewById(R.id.searchButton);
-        startTxt = (TextView)findViewById(R.id.mainText);
-        sports = (Spinner)findViewById(R.id.spinner);
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        title = (TextView)findViewById(R.id.mainTitle);
+        image = (ImageView)findViewById(R.id.mainImage);
+        startTxt = (TextView)findViewById(R.id.mainText);
+        search = (Button)findViewById(R.id.searchButton);
 
     }
 
@@ -80,5 +80,10 @@ public class MainView
     @Override
     public void setStartTxt(String txt){
         startTxt.setText(txt);
+    }
+
+    @Override
+    public void setTitleTxt(String txt){
+        title.setText(txt);
     }
 }

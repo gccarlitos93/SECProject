@@ -44,6 +44,7 @@ public interface Main {
         void hideProgress();
         void setSearchBtnLabel(String txt);
         void setStartTxt(String txt);
+        void setTitleTxt(String txt);
     }
 
     /**
@@ -53,6 +54,7 @@ public interface Main {
 
         String getSearchBtnLabel();
         String getMainText();
+        String getTitleText();
     }
 
     /**
