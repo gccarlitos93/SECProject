@@ -6,13 +6,16 @@ import android.content.Intent;
 
 import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
 import es.ulpgc.eite.clean.mvp.sample.dummy.DummyView;
+import es.ulpgc.eite.clean.mvp.sample.filter.Filter;
+import es.ulpgc.eite.clean.mvp.sample.filter.FilterView;
 import es.ulpgc.eite.clean.mvp.sample.main.Main;
 
 
 public class App extends Application implements Mediator, Navigator {
 
   private DummyState toDummyState, dummyToState;
-  private MainState toMainState, mainToState;
+  private MainState toMainState;
+  private FilterState mainToFilterState;
 
 
   @Override
@@ -45,8 +48,35 @@ public class App extends Application implements Mediator, Navigator {
     presenter.onScreenStarted();
   }
 
+  @Override
+  public void startingFilterScreen(Filter.MainToFilter presenter) {
+    if(mainToFilterState != null){
+      presenter.setTextVisibility(mainToFilterState.textVisibility);
+      presenter.setToolbarVisibility(mainToFilterState.toolbarVisibility);
+      //presenter.setHelloButtonClicked(helloToByeState.buttonClicked);
+
+    }
+
+    presenter.onScreenStarted();
+  }
+
   ///////////////////////////////////////////////////////////////////////////////////
   // Navigator /////////////////////////////////////////////////////////////////////
+
+  public void goToFilterScreen(Main.MainToFilter presenter) {
+    mainToFilterState = new FilterState();
+    mainToFilterState.toolbarVisibility = presenter.isToolbarVisible();
+    //helloToByeState.msg = presenter.getMessage();
+    //helloToByeState.buttonClicked = presenter.isButtonClicked();
+    mainToFilterState.textVisibility = presenter.isTextVisible();
+
+    Context view = presenter.getManagedContext();
+    if (view != null) {
+      view.startActivity(new Intent(view, FilterView.class));
+      //presenter.destroyView();
+    }
+
+  }
 
 
   @Override
@@ -64,8 +94,8 @@ public class App extends Application implements Mediator, Navigator {
   }
 
   @Override
-  public void goToMasterScreen(Main.MainToMaster presenter) {
-    
+  public void goToMainScreen(Filter.FilterToMain presenter) {
+
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -79,6 +109,12 @@ public class App extends Application implements Mediator, Navigator {
   private class MainState {
     boolean toolbarVisibility;
     //boolean textVisibility;
+  }
+  private class FilterState {
+    boolean toolbarVisibility;
+    boolean buttonClicked;
+    boolean textVisibility;
+    //public String msg;
   }
 
 }
