@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="islands">
+        <item>Seleccione una isla</item>
+        <item>El Hierro</item>
+        <item>Fuerteventura</item>
+        <item>Gran Canaria</item>
+        <item>Tenerife</item>
+        <item>Lanzarote</item>
+        <item>La Gomera</item>
+        <item>La Palma</item>
+
+    </string-array>
+    <string-array name="sports">
+        <item>Seleccione un deporte</item>
+        <item>Atletismo</item>
+        <item>Baloncesto</item>
+        <item>Balonmano</item>
+        <item>Boxeo</item>
+        <item>Ciclismo</item>
+        <item>Fútbol</item>
+        <item>Natación</item>
+
+    </string-array>
+
+</resources>
