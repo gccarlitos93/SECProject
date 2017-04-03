@@ -14,10 +14,6 @@
     tools:context="es.ulpgc.eite.clean.mvp.sample.filter.FilterView"
     tools:showIn="@layout/activity_filter">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
@@ -29,34 +25,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/islandLabel"
-        android:text="Text"/>
+        android:text="Text"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/islandSpinner"
         android:drawSelectorOnTop="true"
-        android:entries="@array/islands"/>
+        android:entries="@array/islands"
+        android:layout_marginTop="@dimen/small_separation"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/islandLabel"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/sportLabel"
-        android:text="Text"/>
+        android:text="Text"
+        android:layout_marginTop="@dimen/normal_separation"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:layout_below="@id/islandSpinner"/>
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/sportSpinner"
+        android:layout_marginTop="@dimen/small_separation"
+        android:layout_alignStart="@+id/islandSpinner"
         android:drawSelectorOnTop="true"
-        android:entries="@array/sports"></Spinner>
+        android:entries="@array/sports"
+        android:layout_below="@id/sportLabel"></Spinner>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="@dimen/fab_margin"
-        android:layout_height="@dimen/fab_margin"/>
-
-    </LinearLayout>
-
+        android:layout_height="@dimen/fab_margin"
+        android:layout_below="@id/sportSpinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        app:backgroundTint="@color/colorPrimaryDark"
+        android:src="@drawable/ic_search_white_24dp"
+        />
 
 
 
