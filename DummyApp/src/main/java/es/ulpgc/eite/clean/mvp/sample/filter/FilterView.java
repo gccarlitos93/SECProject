@@ -1,5 +1,6 @@
 package es.ulpgc.eite.clean.mvp.sample.filter;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -51,6 +52,7 @@ public class FilterView extends GenericActivity<Filter.PresenterToView, Filter.V
      * Method that initialized MVP objects
      * {@link super#onResume(Class, Object)} should always be called
      */
+    @SuppressLint("MissingSuperCall")
     @Override
     protected void onResume() {
         super.onResume(FilterPresenter.class, this);
@@ -70,15 +72,6 @@ public class FilterView extends GenericActivity<Filter.PresenterToView, Filter.V
         toolbar.setVisibility(View.GONE);
     }
 
-    @Override
-    public void showProgress() {
-
-    }
-
-    @Override
-    public void hideProgress() {
-
-    }
 
     /*@Override
     public void hideByeMsg() {
