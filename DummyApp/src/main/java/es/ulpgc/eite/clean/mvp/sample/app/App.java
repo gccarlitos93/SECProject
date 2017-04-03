@@ -6,7 +6,6 @@ import android.content.Intent;
 
 import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
 import es.ulpgc.eite.clean.mvp.sample.dummy.DummyView;
-import es.ulpgc.eite.clean.mvp.sample.filter.Filter;
 import es.ulpgc.eite.clean.mvp.sample.filter.FilterView;
 import es.ulpgc.eite.clean.mvp.sample.main.Main;
 
@@ -21,8 +20,11 @@ public class App extends Application implements Mediator, Navigator {
   @Override
   public void onCreate() {
     super.onCreate();
+    toDummyState = new DummyState();
+    toDummyState.toolbarVisibility = false;
+    toDummyState.textVisibility = false;
+
     toMainState = new MainState();
-    toMainState.toolbarVisibility = false;
 
   }
 
@@ -67,7 +69,7 @@ public class App extends Application implements Mediator, Navigator {
     mainToFilterState = new FilterState();
     mainToFilterState.toolbarVisibility = presenter.isToolbarVisible();
     //helloToByeState.msg = presenter.getMessage();
-    mainToFilterState.buttonClicked = presenter.isButtonClicked();
+    //mainToFilterState.buttonClicked = presenter.isButtonClicked();
     //mainToFilterState.textVisibility = presenter.isTextVisible();
 
     Context view = presenter.getManagedContext();
@@ -106,15 +108,17 @@ public class App extends Application implements Mediator, Navigator {
     boolean textVisibility;
   }
 
-  private class MainState {
-    boolean toolbarVisibility;
-    //boolean textVisibility;
-  }
   private class FilterState {
     boolean toolbarVisibility;
     boolean buttonClicked;
     boolean textVisibility;
     //public String msg;
   }
+
+  private class MainState {
+    boolean toolbarVisibility;
+    //boolean textVisibility;
+  }
+
 
 }

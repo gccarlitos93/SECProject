@@ -1,7 +1,6 @@
 package es.ulpgc.eite.clean.mvp.sample.app;
 
 import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
-import es.ulpgc.eite.clean.mvp.sample.filter.Filter;
 import es.ulpgc.eite.clean.mvp.sample.main.Main;
 
 public interface Mediator {
