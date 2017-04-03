@@ -22,7 +22,7 @@ public class FilterView extends GenericActivity<Filter.PresenterToView, Filter.V
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_filter);
+        setContentView(R.layout.activity_filter);
 
         //byeMsgView = (TextView) findViewById(R.id.byeMsg);
         //progressView = (ProgressBar) findViewById(R.id.progressBar);

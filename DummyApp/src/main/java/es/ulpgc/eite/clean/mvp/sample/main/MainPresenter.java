@@ -113,4 +113,9 @@ public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.P
     public void setTextVisibility(boolean visible) {
 
     }
+
+    @Override
+    public void onSearchBtnClicked() {
+
+    }
 }
