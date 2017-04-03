@@ -67,9 +67,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         app:backgroundTint="@color/colorPrimaryDark"
+        app:elevation="6dp"
+        app:borderWidth="0dp"
         android:src="@drawable/ic_search_white_24dp"
         />
-
 
 
 </RelativeLayout>
