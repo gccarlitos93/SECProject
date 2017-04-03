@@ -26,7 +26,7 @@ public interface Filter {
         void setTextVisibility(boolean visible);
 
         void setButtonClicked(boolean clicked);
-        void setSearchButtonClicked(boolean clicked);
+
         //void setHelloMessage(String msg);
     }
 

@@ -18,7 +18,7 @@ public class FilterPresenter extends GenericPresenter<Filter.PresenterToView, Fi
 
     private boolean toolbarVisible;
     private boolean buttonClicked;
-    //private boolean helloBtnClicked;
+    private boolean helloBtnClicked;
     private boolean textVisible;
     //private boolean helloTextVisible;
     //private String helloMsg;
@@ -188,10 +188,7 @@ public class FilterPresenter extends GenericPresenter<Filter.PresenterToView, Fi
         this.buttonClicked = clicked;
     }
 
-    @Override
-    public void setSearchButtonClicked(boolean clicked) {
 
-    }
 
    /* @Override
     public void setHelloTextVisibility(boolean visibility) {

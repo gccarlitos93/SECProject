@@ -108,7 +108,7 @@ public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.P
 
 
         }
-        checkToolbarVisibility();
+
     }
 
     @Override
@@ -178,15 +178,7 @@ public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.P
     getView().setByeMsg(getModel().getHelloMsg());
   }
   */
-    private void checkToolbarVisibility(){
-        Log.d(TAG, "calling checkToolbarVisibility()");
-        if(isViewRunning()) {
-            if (!toolbarVisible) {
-                getView().hideToolbar();
-            }
-        }
 
-    }
 
     /*private void checkTextVisibility(){
         Log.d(TAG, "calling checkTextVisibility()");

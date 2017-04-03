@@ -28,6 +28,7 @@ public class FilterView extends GenericActivity<Filter.PresenterToView, Filter.V
         //progressView = (ProgressBar) findViewById(R.id.progressBar);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
 
         //btnSayByeView = (Button) findViewById(R.id.btnSayBye);

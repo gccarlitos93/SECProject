@@ -36,6 +36,12 @@ public class MainView
         image = (ImageView)findViewById(R.id.mainImage);
         startTxt = (TextView)findViewById(R.id.mainText);
         search = (Button)findViewById(R.id.searchButton);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getPresenter().onSearchBtnClicked();
+            }
+        });
 
     }
 
