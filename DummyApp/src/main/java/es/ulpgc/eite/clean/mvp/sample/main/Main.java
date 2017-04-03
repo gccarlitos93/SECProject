@@ -16,9 +16,9 @@ public interface Main {
         boolean isToolbarVisible();
         Context getManagedContext();
 
-        boolean isTextVisible();
+        //boolean isTextVisible();
         boolean isButtonClicked();
-        String getMessage();
+        //String getMessage();
 
     }
 

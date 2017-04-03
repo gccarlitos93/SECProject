@@ -12,7 +12,10 @@ import es.ulpgc.eite.clean.mvp.sample.app.Navigator;
 
 //Extender e implementar
 public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.PresenterToModel, Main.ModelToPresenter, MainModel>
-        implements Main.ViewToPresenter, Main.ModelToPresenter,  Main.ToMain {
+        implements Main.ViewToPresenter, Main.ModelToPresenter,  Main.ToMain, Main.MainToFilter {
+
+    private boolean toolbarVisible;
+    private boolean buttonClicked;
 
     /**
      * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
@@ -80,14 +83,18 @@ public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.P
     ///////////////////////////////////////////////////////////////////////////////////
     // View To Presenter /////////////////////////////////////////////////////////////
 
-
+    @Override
+    public void onSearchBtnClicked() {
+        Navigator app = (Navigator) getView().getApplication();
+        app.goToFilterScreen(this);
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////
     // Model To Presenter ////////////////////////////////////////////////////////////
 
 
     ///////////////////////////////////////////////////////////////////////////////////
-    // ToMaster //////////////////////////////////////////////////////////////////////
+    // ToFilter //////////////////////////////////////////////////////////////////////
 
     @Override
     public void onScreenStarted() {
@@ -101,12 +108,12 @@ public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.P
 
 
         }
-
+        checkToolbarVisibility();
     }
 
     @Override
     public void setToolbarVisibility(boolean visible) {
-
+        toolbarVisible = visible;
     }
 
     @Override
@@ -114,8 +121,81 @@ public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.P
 
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////
+    // Bye To Bye //////////////////////////////////////////////////////////////////
+
     @Override
-    public void onSearchBtnClicked() {
+    public boolean isToolbarVisible() {
+        return toolbarVisible;
+    }
+
+    @Override
+    public Context getManagedContext(){
+        return getActivityContext();
+    }
+
+  /*
+
+
+  @Override
+  public void destroyView(){
+    if(isViewRunning()) {
+      getView().finishScreen();
+    }
+  }
+
+  @Override
+  public boolean isTextVisible() {
+    return textVisible;
+  }
+  */
+
+    ///////////////////////////////////////////////////////////////////////////////////
+
+
+    /*@Override
+    public boolean isTextVisible() {
+        return textVisible;
+    }*/
+
+    @Override
+    public boolean isButtonClicked() {
+        return buttonClicked;
+    }
+
+   /* @Override
+    public String getMessage() {
+        return msg; // can be null
+    }*/
+
+    private void setButtonClicked(boolean clicked) {
+        this.buttonClicked = clicked;
+    }
+
+  /*
+  private void checkHelloMsg(){
+    getView().showByeMsg();
+    getView().setByeMsg(getModel().getHelloMsg());
+  }
+  */
+    private void checkToolbarVisibility(){
+        Log.d(TAG, "calling checkToolbarVisibility()");
+        if(isViewRunning()) {
+            if (!toolbarVisible) {
+                getView().hideToolbar();
+            }
+        }
 
     }
+
+    /*private void checkTextVisibility(){
+        Log.d(TAG, "calling checkTextVisibility()");
+        if(isViewRunning()) {
+            if(!textVisible) {
+                getView().hideHelloMsg();
+            } else {
+                getView().showHelloMsg();
+            }
+        }
+    }*/
 }

@@ -67,7 +67,7 @@ public class App extends Application implements Mediator, Navigator {
     mainToFilterState = new FilterState();
     mainToFilterState.toolbarVisibility = presenter.isToolbarVisible();
     //helloToByeState.msg = presenter.getMessage();
-    //helloToByeState.buttonClicked = presenter.isButtonClicked();
+    //mainToFilterState.buttonClicked = presenter.isButtonClicked();
     mainToFilterState.textVisibility = presenter.isTextVisible();
 
     Context view = presenter.getManagedContext();
