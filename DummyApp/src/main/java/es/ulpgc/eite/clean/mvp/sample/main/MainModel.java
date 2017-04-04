@@ -18,7 +18,7 @@ public class MainModel extends GenericModel<Main.ModelToPresenter> implements Ma
     public void onCreate(Main.ModelToPresenter presenter){
         super.onCreate(presenter);
 
-        intoBtnLabel = "Buscar";
+        intoBtnLabel = "Entrar";
         mainText = "Sport Events Canary. Encuentra los eventos de tus deportes favoritos con un par de " +
                    "clicks. Recibe toda la información que necesitas sobre ese partido al que quieres asistir o esa " +
                    "carrera que tanto te gusta participar. Accede a los enlaces para inscribirte o compar las entradas.";
