@@ -22,7 +22,7 @@
         android:id="@+id/mainTitle"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:paddingTop="10dp"
+        android:paddingTop="@dimen/normal_separation"
         android:text="Text"
         android:textStyle="bold"/>
 
@@ -33,20 +33,20 @@
         android:id="@+id/mainText"
         android:layout_below="@id/mainTitle"
         android:text="Text"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/small_separation"
         />
 
     <Button
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/searchButton"
+        android:id="@+id/intoButton"
         android:layout_below="@id/mainText"
         android:text="Button"
         android:layout_centerHorizontal="true"
         android:textColor="@color/colorText"
         android:background="@color/colorPrimary"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/big_separation"
         android:textStyle="bold"/>
 
     <ImageView

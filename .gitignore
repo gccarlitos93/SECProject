@@ -49,4 +49,3 @@ proguard/
 gen-external-apklibs
 
 ### Java ###
-*.class

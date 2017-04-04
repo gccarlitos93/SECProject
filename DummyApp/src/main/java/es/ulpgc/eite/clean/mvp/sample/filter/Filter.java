@@ -1,4 +1,4 @@
-package es.ulpgc.eite.clean.mvp.sample.main;
+package es.ulpgc.eite.clean.mvp.sample.filter;
 
 import android.content.Context;
 
@@ -6,28 +6,29 @@ import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.Model;
 import es.ulpgc.eite.clean.mvp.Presenter;
 
-public interface Main {
+/**
+ * Created by Carlitos93 on 03/04/2017.
+ */
+public interface Filter {
 
     ///////////////////////////////////////////////////////////////////////////////////
     // State /////////////////////////////////////////////////////////////////////////
 
-    interface MainToFilter {
+    public interface FilterToMain {
 
         boolean isToolbarVisible();
         Context getManagedContext();
-
-        //boolean isTextVisible();
-        boolean isButtonClicked();
-        //String getMessage();
-
     }
 
-    interface ToMain {
+    public interface MainToFilter {
         void onScreenStarted();
         void setToolbarVisibility(boolean visible);
         void setTextVisibility(boolean visible);
-    }
 
+        void setButtonClicked(boolean clicked);
+
+        //void setHelloMessage(String msg);
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////
     // Screen ////////////////////////////////////////////////////////////////////////
@@ -37,8 +38,6 @@ public interface Main {
      */
     interface ViewToPresenter extends Presenter<PresenterToView> {
 
-        void onIntoBtnClicked();
-        //void onStartingView();
     }
 
     /**
@@ -47,11 +46,11 @@ public interface Main {
     interface PresenterToView extends ContextView {
         void finishScreen();
         void hideToolbar();
-        void showProgress();
-        void hideProgress();
-        void setIntoBtnLabel(String txt);
-        void setStartTxt(String txt);
-        void setTitleTxt(String txt);
+        //void showProgress();
+        //void hideProgress();
+        void setFilterText(String txt);
+        void setIslandLabel(String txt);
+        void setSportLabel(String txt);
     }
 
     /**
@@ -59,9 +58,9 @@ public interface Main {
      */
     interface PresenterToModel extends Model<ModelToPresenter> {
 
-        String getIntoBtnLabel();
-        String getMainText();
-        String getTitleText();
+        String getFilterText();
+        String getIslandLabel();
+        String getSportLabel();
     }
 
     /**
@@ -70,4 +69,6 @@ public interface Main {
     interface ModelToPresenter {
 
     }
+
+
 }

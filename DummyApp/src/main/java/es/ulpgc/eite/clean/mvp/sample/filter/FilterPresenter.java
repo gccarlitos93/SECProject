@@ -1,5 +1,4 @@
-package es.ulpgc.eite.clean.mvp.sample.main;
-
+package es.ulpgc.eite.clean.mvp.sample.filter;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,12 +9,19 @@ import es.ulpgc.eite.clean.mvp.GenericPresenter;
 import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
 import es.ulpgc.eite.clean.mvp.sample.app.Navigator;
 
-//Extender e implementar
-public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.PresenterToModel, Main.ModelToPresenter, MainModel>
-        implements Main.ViewToPresenter, Main.ModelToPresenter,  Main.ToMain, Main.MainToFilter {
+/**
+ * Created by Carlitos93 on 03/04/2017.
+ */
+public class FilterPresenter extends GenericPresenter<Filter.PresenterToView, Filter.PresenterToModel, Filter.ModelToPresenter, FilterModel>
+        implements Filter.ViewToPresenter, Filter.ModelToPresenter, Filter.MainToFilter, Filter.FilterToMain {
+
 
     private boolean toolbarVisible;
     private boolean buttonClicked;
+    private boolean helloBtnClicked;
+    private boolean textVisible;
+    //private boolean helloTextVisible;
+    //private String helloMsg;
 
     /**
      * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
@@ -25,19 +31,20 @@ public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.P
      *
      * @param view The current VIEW instance
      */
-    @Override
-    public void onCreate(Main.PresenterToView view) {
 
-        super.onCreate(MainModel.class, this);
+    @Override
+    public void onCreate(Filter.PresenterToView view) {
+        super.onCreate(FilterModel.class, this);
         setView(view);
         Log.d(TAG, "calling onCreate()");
 
-        Log.d(TAG, "calling startingMainScreen()");
+        Log.d(TAG, "calling startingByeScreen()");
         Mediator app = (Mediator) getView().getApplication();
-        app.startingMainScreen(this);
+        app.startingFilterScreen(this);
+
     }
 
-    /**
+     /**
      * Operation called by VIEW after its reconstruction.
      * Always call {@link GenericPresenter#setView(ContextView)}
      * to save the new instance of PresenterToView
@@ -45,15 +52,19 @@ public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.P
      * @param view The current VIEW instance
      */
     @Override
-    public void onResume(Main.PresenterToView view) {
-
+    public void onResume(Filter.PresenterToView view) {
         setView(view);
         Log.d(TAG, "calling onResume()");
+
         if(configurationChangeOccurred()) { // giro pantalla
             onScreenStarted();
-        }else{
-            //segundo plano
+            /*if(isButtonClicked()){
+                getModel().startByeGetMessageTask();
+            }*/
+        } else { // segundo a primer plano
+
         }
+
     }
 
     /**
@@ -62,7 +73,6 @@ public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.P
      */
     @Override
     public void onBackPressed() {
-
         Log.d(TAG, "calling onBackPressed()");
     }
 
@@ -75,40 +85,58 @@ public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.P
      * @param isChangingConfiguration true: configuration changing & false: being destroyed
      */
     @Override
-    public void onDestroy(boolean isChangingConfiguration){
+    public void onDestroy(boolean isChangingConfiguration) {
         super.onDestroy(isChangingConfiguration);
         Log.d(TAG, "calling onDestroy()");
     }
 
+
     ///////////////////////////////////////////////////////////////////////////////////
     // View To Presenter /////////////////////////////////////////////////////////////
 
-    @Override
-    public void onIntoBtnClicked() {
+
+
+    /*@Override
+    public void onGoToHelloBtnClicked() {
         Navigator app = (Navigator) getView().getApplication();
-        app.goToFilterScreen(this);
-    }
+        app.goToHelloScreen(this);
+    }*/
+
 
     ///////////////////////////////////////////////////////////////////////////////////
     // Model To Presenter ////////////////////////////////////////////////////////////
 
 
+    /*@Override
+    public void onByeGetMessageTaskFinished(String text) {
+        if(isViewRunning()) {
+            getView().setByeMsg(text);
+        }
+
+        setTextVisibility(true);
+        checkTextVisibility();
+        checkProgressVisibility();
+    }*/
+
+
     ///////////////////////////////////////////////////////////////////////////////////
-    // ToFilter //////////////////////////////////////////////////////////////////////
+    // Hello To Bye //////////////////////////////////////////////////////////////////
 
     @Override
     public void onScreenStarted() {
-
         Log.d(TAG, "calling onScreenStarted()");
 
-        if(isViewRunning()){
-            getView().setIntoBtnLabel(getModel().getIntoBtnLabel());
-            getView().setStartTxt(getModel().getMainText());
-            getView().setTitleTxt(getModel().getTitleText());
-
-
+        if(isViewRunning()) {
+            getView().setFilterText(getModel().getFilterText());
+            getView().setIslandLabel(getModel().getIslandLabel());
+            getView().setSportLabel(getModel().getSportLabel());
         }
 
+        //textVisible = helloTextVisible;
+
+        checkToolbarVisibility();
+        //checkProgressVisibility();
+        checkTextVisibility();
     }
 
     @Override
@@ -118,11 +146,12 @@ public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.P
 
     @Override
     public void setTextVisibility(boolean visible) {
-
+        textVisible = visible;
     }
 
+
     ///////////////////////////////////////////////////////////////////////////////////
-    // Bye To Bye //////////////////////////////////////////////////////////////////
+    // Bye To Hello //////////////////////////////////////////////////////////////////
 
     @Override
     public boolean isToolbarVisible() {
@@ -134,60 +163,101 @@ public class MainPresenter extends GenericPresenter<Main.PresenterToView, Main.P
         return getActivityContext();
     }
 
+
   /*
-
-
   @Override
   public void destroyView(){
     if(isViewRunning()) {
       getView().finishScreen();
     }
   }
-
-  @Override
-  public boolean isTextVisible() {
-    return textVisible;
-  }
   */
 
     ///////////////////////////////////////////////////////////////////////////////////
 
 
-    /*@Override
-    public boolean isTextVisible() {
+    private boolean isTextVisible() {
         return textVisible;
-    }*/
+    }
 
-    @Override
-    public boolean isButtonClicked() {
+    private boolean isButtonClicked() {
         return buttonClicked;
     }
 
-   /* @Override
-    public String getMessage() {
-        return msg; // can be null
-    }*/
-
-    private void setButtonClicked(boolean clicked) {
+    @Override
+    public void setButtonClicked(boolean clicked) {
         this.buttonClicked = clicked;
     }
 
-  /*
-  private void checkHelloMsg(){
-    getView().showByeMsg();
-    getView().setByeMsg(getModel().getHelloMsg());
-  }
-  */
 
 
-    /*private void checkTextVisibility(){
-        Log.d(TAG, "calling checkTextVisibility()");
+   /* @Override
+    public void setHelloTextVisibility(boolean visibility) {
+        helloTextVisible = visibility;
+    }
+
+    @Override
+    public void setHelloButtonClicked(boolean clicked) {
+        helloBtnClicked = clicked;
+    }*/
+
+   /* @Override
+    public void setHelloMessage(String msg) {
+        helloMsg = msg;
+    }
+
+    private void checkProgressVisibility(){
+        Log.d(TAG, "calling checkProgressVisibility()");
         if(isViewRunning()) {
-            if(!textVisible) {
-                getView().hideHelloMsg();
+      *//*
+      if(helloBtnClicked && !helloTextVisible) {
+        getView().showProgress();
+      } else {
+        getView().hideProgress();
+      }
+      *//*
+
+
+            if (isButtonClicked() && !isTextVisible()) {
+                getView().showProgress();
             } else {
-                getView().showHelloMsg();
+                getView().hideProgress();
             }
         }
+
     }*/
+
+    private void checkToolbarVisibility(){
+        Log.d(TAG, "calling checkToolbarVisibility()");
+        if(isViewRunning()) {
+            if (!toolbarVisible) {
+                getView().hideToolbar();
+            }
+        }
+
+    }
+
+    private void checkTextVisibility(){
+        Log.d(TAG, "calling checkTextVisibility()");
+        if(isViewRunning()) {
+      /*
+      if(helloTextVisible && textVisible) {
+
+      }
+
+      if(helloTextVisible && helloBtnClicked) {
+        getView().setByeMsg(helloMsg);
+        getView().showByeMsg();
+      } else {
+        getView().hideByeMsg();
+      }
+      */
+
+           /* if(!textVisible) {
+                getView().hideByeMsg();
+            } else {
+                getView().showByeMsg();
+            }*/
+        }
+    }
 }

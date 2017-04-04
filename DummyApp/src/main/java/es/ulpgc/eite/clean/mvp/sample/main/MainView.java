@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -18,7 +17,7 @@ public class MainView
         extends GenericActivity<Main.PresenterToView, Main.ViewToPresenter, MainPresenter>
         implements Main.PresenterToView {
 
-    private Button search;
+    private Button intoButton;
     private TextView title;
     private TextView startTxt;
     private ImageView image;
@@ -35,7 +34,13 @@ public class MainView
         title = (TextView)findViewById(R.id.mainTitle);
         image = (ImageView)findViewById(R.id.mainImage);
         startTxt = (TextView)findViewById(R.id.mainText);
-        search = (Button)findViewById(R.id.searchButton);
+        intoButton = (Button)findViewById(R.id.intoButton);
+        intoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getPresenter().onIntoBtnClicked();
+            }
+        });
 
     }
 
@@ -73,8 +78,8 @@ public class MainView
     }
 
     @Override
-    public void setSearchBtnLabel(String txt){
-        search.setText(txt);
+    public void setIntoBtnLabel(String txt){
+        intoButton.setText(txt);
     }
 
     @Override
