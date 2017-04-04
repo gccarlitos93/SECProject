@@ -6,4 +6,5 @@
     <dimen name="normal_separation">10dp</dimen>
     <dimen name="small_separation">5dp</dimen>
     <dimen name="big_separation">40dp</dimen>
+    <dimen name="image_top">20dp</dimen>
 </resources>

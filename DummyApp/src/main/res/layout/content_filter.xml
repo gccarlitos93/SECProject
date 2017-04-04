@@ -19,7 +19,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/filterText"
-        android:text="Text"/>
+        android:text="Text"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/filterImage"
+        android:src="@drawable/filter_screen"
+        android:layout_above="@id/filterText"
+        android:layout_marginTop="@dimen/image_top"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,8 +36,9 @@
         android:id="@+id/islandLabel"
         android:text="Text"
         android:textStyle="bold"
+        android:layout_marginTop="@dimen/normal_separation"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_below="@+id/filterText"/>
 
     <Spinner
         android:layout_width="wrap_content"
@@ -65,7 +75,7 @@
         android:layout_height="@dimen/fab_margin"
         android:layout_below="@id/sportSpinner"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="@dimen/normal_separation"
         app:backgroundTint="@color/colorPrimaryDark"
         app:elevation="6dp"
         app:borderWidth="0dp"

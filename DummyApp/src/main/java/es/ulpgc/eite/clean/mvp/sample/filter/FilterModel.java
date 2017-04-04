@@ -21,7 +21,7 @@ public class FilterModel extends GenericModel<Filter.ModelToPresenter>
     public void onCreate(Filter.ModelToPresenter presenter) {
         super.onCreate(presenter);
 
-        filterText = "Ahora solo tienes que elegir en que isla buscas el evento deportivo y con que deporte está relacionado";
+        filterText = "Ya solo te queda decirnos en que isla buscas los eventos y con que deporte está relacionado.";
         islandLabel = "Isla";
         sportLabel = "Deporte";
 

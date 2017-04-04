@@ -231,7 +231,7 @@ public class FilterPresenter extends GenericPresenter<Filter.PresenterToView, Fi
         Log.d(TAG, "calling checkToolbarVisibility()");
         if(isViewRunning()) {
             if (!toolbarVisible) {
-                getView().hideToolbar();
+                //getView().hideToolbar();
             }
         }
 
