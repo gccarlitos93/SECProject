@@ -25,6 +25,8 @@
         android:layout_centerHorizontal="true"
         android:paddingTop="@dimen/normal_separation"
         android:text="Text"
+        android:textColor="@color/colorPrimary"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textStyle="bold"/>
 
     <TextView
