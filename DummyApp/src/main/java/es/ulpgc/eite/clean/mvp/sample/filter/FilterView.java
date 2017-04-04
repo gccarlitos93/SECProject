@@ -4,6 +4,9 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -50,6 +53,21 @@ public class FilterView extends GenericActivity<Filter.PresenterToView, Filter.V
     protected void onResume() {
         super.onResume(FilterPresenter.class, this);
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_dummy, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id==R.id.action_settings){
+            //finish();
+        }
+        return onOptionsItemSelected(item);
+    }
+
 
 
     ///////////////////////////////////////////////////////////////////////////////////
