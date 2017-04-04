@@ -10,5 +10,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="es.ulpgc.eite.clean.mvp.masterdetail.master.MasterView"
+    tools:context="es.ulpgc.eite.clean.mvp.sample.master.MasterView"
     tools:listitem="@layout/item_list_content"/>
