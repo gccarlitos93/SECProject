@@ -6,4 +6,5 @@
     <string name="screen_text">Text</string>
     <string name="button_label">Button</string>
     <string name="spin">Seleccione una isla</string>
+    <string name="title_item_list">Item List</string>
 </resources>

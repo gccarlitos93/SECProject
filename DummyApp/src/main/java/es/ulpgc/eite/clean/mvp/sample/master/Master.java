@@ -11,7 +11,17 @@ import es.ulpgc.eite.clean.mvp.Model;
 import es.ulpgc.eite.clean.mvp.Presenter;
 import es.ulpgc.eite.clean.mvp.sample.app.ModelItem;
 
+
+
 public interface Master {
+
+    /**
+     * Interfaz que permite fijar el estado de la pantalla del maestro cuando la app arranca
+     */
+    interface ToMaster {
+        void onScreenStarted();
+        void setToolbarVisibility(boolean visible);
+    }
 
     /**
      * Interfaz que permite iniciar la pantalla del detalle y recopilar los valores necesarios
@@ -32,6 +42,7 @@ public interface Master {
         void setItemToDelete(ModelItem item);
     }
 
+
     /////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -48,10 +59,10 @@ public interface Master {
      * Required VIEW methods available to PRESENTER
      */
     interface PresenterToView extends ContextView {
-        void hideProgress();
+        //void hideProgress();
         void hideToolbar();
         void showError(String msg);
-        void showProgress();
+        //void showProgress();
         void setRecyclerAdapterContent(List<ModelItem> items);
     }
 
@@ -73,4 +84,6 @@ public interface Master {
         void onLoadItemsTaskFinished(List<ModelItem> items);
         void onLoadItemsTaskStarted();
     }
+
 }
+

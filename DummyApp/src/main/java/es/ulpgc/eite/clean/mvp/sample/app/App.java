@@ -9,11 +9,13 @@ import es.ulpgc.eite.clean.mvp.sample.dummy.DummyView;
 import es.ulpgc.eite.clean.mvp.sample.filter.Filter;
 import es.ulpgc.eite.clean.mvp.sample.filter.FilterView;
 import es.ulpgc.eite.clean.mvp.sample.main.Main;
+import es.ulpgc.eite.clean.mvp.sample.master.Master;
 
 
 public class App extends Application implements Mediator, Navigator {
 
   private DummyState toDummyState, dummyToState;
+  private MasterState toMasterState;
   private MainState toMainState;
   private FilterState mainToFilterState;
 
@@ -21,9 +23,8 @@ public class App extends Application implements Mediator, Navigator {
   @Override
   public void onCreate() {
     super.onCreate();
-    toDummyState = new DummyState();
-    toDummyState.toolbarVisibility = false;
-    toDummyState.textVisibility = false;
+    toMasterState = new MasterState();
+    toMasterState.hideToolbar = false;
 
     toMainState = new MainState();
 
@@ -31,6 +32,26 @@ public class App extends Application implements Mediator, Navigator {
 
   ///////////////////////////////////////////////////////////////////////////////////
   // Mediator //////////////////////////////////////////////////////////////////////
+
+  /**
+   * Llamado cuando arranca la app para fijar el estado inicial del maestro
+   *
+   * @param presenter implementando la interfaz necesaria para fijar el estado inicial
+   */
+  @Override
+  public void startingMasterScreen(Master.ToMaster presenter){
+    if(toMasterState != null) {
+      presenter.setToolbarVisibility(!toMasterState.hideToolbar);
+    }
+
+    // Una vez fijado el estado inicial, el maestro puede iniciarse normalmente
+    presenter.onScreenStarted();
+  }
+
+  @Override
+  public void resumingMasterScreen(Master.DetailToMaster presenter) {
+
+  }
 
   @Override
   public void startingDummyScreen(Dummy.ToDummy presenter){
@@ -119,6 +140,12 @@ public class App extends Application implements Mediator, Navigator {
   private class MainState {
     boolean toolbarVisibility;
     //boolean textVisibility;
+  }
+  /**
+   * Estado inicial del maestro
+   */
+  private class MasterState {
+    boolean hideToolbar;
   }
 
 
