@@ -13,6 +13,12 @@ import es.ulpgc.eite.clean.mvp.sample.app.ModelItem;
 
 public interface Master {
 
+    interface ToMaster {
+        void onScreenStarted();
+        void setToolbarVisibility(boolean visible);
+        // void setTextVisibility(boolean visible);
+    }
+
     /**
      * Interfaz que permite iniciar la pantalla del detalle y recopilar los valores necesarios
      * para rellenar el estado inicial que se pasará a la pantalla del detalle al iniciarse
