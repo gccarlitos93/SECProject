@@ -7,12 +7,14 @@ import android.content.Intent;
 import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
 import es.ulpgc.eite.clean.mvp.sample.dummy.DummyView;
 import es.ulpgc.eite.clean.mvp.sample.main.Main;
+import es.ulpgc.eite.clean.mvp.sample.master.Master;
 
 
 public class App extends Application implements Mediator, Navigator {
 
   private DummyState toDummyState, dummyToState;
   private MainState toMainState;
+  private MasterState toMasterState;
 
 
   @Override
@@ -23,6 +25,8 @@ public class App extends Application implements Mediator, Navigator {
     toDummyState.textVisibility = false;
 
     toMainState = new MainState();
+    toMasterState = new MasterState();
+    toMasterState.hideToolbar = false;
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -45,6 +49,20 @@ public class App extends Application implements Mediator, Navigator {
     }
     //toMainState = null;
     presenter.onScreenStarted();
+  }
+
+  @Override
+  public void startingMasterScreen(Master.ToMaster presenter) {
+      if(toMasterState != null) {
+        presenter.setToolbarVisibility(!toMasterState.hideToolbar);
+      }
+      // Una vez fijado el estado inicial, el maestro puede iniciarse normalmente
+      presenter.onScreenStarted();
+  }
+
+  @Override
+  public void resumingMasterScreen(Master.DetailToMaster presenter) {
+
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -78,4 +96,7 @@ public class App extends Application implements Mediator, Navigator {
     //boolean textVisibility;
   }
 
+  private class MasterState {
+    boolean hideToolbar;
+  }
 }
