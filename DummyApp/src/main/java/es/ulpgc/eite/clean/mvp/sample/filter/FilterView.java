@@ -1,6 +1,7 @@
 package es.ulpgc.eite.clean.mvp.sample.filter;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
+import es.ulpgc.eite.clean.mvp.sample.main.MainView;
 
 /**
  * Created by Carlitos93 on 03/04/2017.
@@ -56,16 +58,26 @@ public class FilterView extends GenericActivity<Filter.PresenterToView, Filter.V
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_dummy, menu);
+        inflater.inflate(R.menu.menu_filter_screen, menu);
         return true;
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+        /*int id = item.getItemId();
         if(id==R.id.action_settings){
             //finish();
         }
-        return onOptionsItemSelected(item);
+        return onOptionsItemSelected(item);*/
+        switch (item.getItemId()) {
+            case R.id.home:
+                Intent homeIntent = new Intent(this, MainView.class);
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(homeIntent);
+                break;
+            case R.id.action_settings:
+                //codigo ir a settings
+        }
+        return (super.onOptionsItemSelected(item));
     }
 
 
