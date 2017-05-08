@@ -8,6 +8,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -20,6 +22,9 @@ import java.util.List;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
 import es.ulpgc.eite.clean.mvp.sample.data.ModelItem;
+import es.ulpgc.eite.clean.mvp.sample.utils.RealmRecyclerViewAdapter;
+import io.realm.OrderedRealmCollection;
+import io.realm.Realm;
 
 /**
  * An activity representing a list of Items.
@@ -47,7 +52,10 @@ public class MasterView
 
         //progressView = (ProgressBar) findViewById(R.id.progress_circle);
         recyclerView = (RecyclerView) findViewById(R.id.item_list);
-        recyclerView.setAdapter(new ModelItemRecyclerViewAdapter());
+        //recyclerView.setAdapter(new ModelItemRecyclerViewAdapter());
+        Realm realm = Realm.getDefaultInstance();
+        recyclerView.setAdapter(
+                new ModelItemRecyclerViewAdapter(realm.where(ModelItem.class).findAllAsync()));
     }
 
     /**
@@ -58,7 +66,7 @@ public class MasterView
     @Override
     protected void onResume() {
         super.onResume(MasterPresenter.class, this);
-        //getPresenter().onResumingContent();
+        getPresenter().onResumingContent();
     }
 
     @Override
@@ -66,14 +74,14 @@ public class MasterView
         super.onDestroy();
     }
 
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_master, menu);
         return true;
-    }*/
+    }
 
-    /*@Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_restore) {
@@ -81,14 +89,14 @@ public class MasterView
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
 
     /////////////////////////////////////////////////////////////////////////////////////
     // Presenter To View ///////////////////////////////////////////////////////////////
 
 
-    /*@Override
+   /* @Override
     public void hideProgress() {
         progressView.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
@@ -124,13 +132,16 @@ public class MasterView
     /////////////////////////////////////////////////////////////////////////////////////
 
 
-    private class ModelItemRecyclerViewAdapter
-            extends RecyclerView.Adapter<ModelItemRecyclerViewAdapter.ViewHolder> {
+
+
+    public class ModelItemRecyclerViewAdapter
+            extends RealmRecyclerViewAdapter<ModelItem, ModelItemRecyclerViewAdapter.ViewHolder> {
 
         private List<ModelItem> items;
 
-        public ModelItemRecyclerViewAdapter() {
-            items = new ArrayList<>();
+        public ModelItemRecyclerViewAdapter( OrderedRealmCollection<ModelItem> items) {
+            super(items, true);
+            this.items = items;
         }
 
 
@@ -141,16 +152,17 @@ public class MasterView
 
 
         @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public ModelItemRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_list_content, parent, false);
-            return new ViewHolder(view);
+            return new ModelItemRecyclerViewAdapter.ViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(final ModelItemRecyclerViewAdapter.ViewHolder holder, int position) {
             holder.item = items.get(position);
-            holder.contentView.setText(items.get(position).getTitle());
+            //holder.item = getData().get(position);
+            holder.contentView.setText(items.get(position).getContent());
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -172,7 +184,7 @@ public class MasterView
             public ViewHolder(View view) {
                 super(view);
                 itemView = view;
-                contentView = (TextView) view.findViewById(R.id.item_title);
+                contentView = (TextView) view.findViewById(R.id.item_content);
             }
 
             @Override
@@ -181,4 +193,64 @@ public class MasterView
             }
         }
     }
+
+  /*
+  private class ModelItemRecyclerViewAdapter
+      extends RecyclerView.Adapter<ModelItemRecyclerViewAdapter.ViewHolder> {
+
+    private List<ModelItem> items;
+
+    public ModelItemRecyclerViewAdapter() {
+      items = new ArrayList<>();
+    }
+
+    public void setItemList(List<ModelItem> items) {
+      this.items = items;
+      notifyDataSetChanged();
+    }
+
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+      View view = LayoutInflater.from(parent.getContext())
+          .inflate(R.layout.item_list_content, parent, false);
+      return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+      holder.item = items.get(position);
+      holder.contentView.setText(items.get(position).getContent());
+      holder.itemView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          getPresenter().onItemClicked(holder.item);
+        }
+      });
+    }
+
+    @Override
+    public int getItemCount() {
+      return items.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+      public final View itemView;
+      public final TextView contentView;
+      public ModelItem item;
+
+      public ViewHolder(View view) {
+        super(view);
+        itemView = view;
+        contentView = (TextView) view.findViewById(R.id.item_content);
+      }
+
+      @Override
+      public String toString() {
+        return super.toString() + " '" + contentView.getText() + "'";
+      }
+    }
+  }
+  */
+
 }

@@ -20,6 +20,7 @@ public interface Master {
      */
     interface ToMaster {
         void onScreenStarted();
+        void setDatabaseValidity(boolean valid);
         void setToolbarVisibility(boolean visible);
     }
 
@@ -73,6 +74,7 @@ public interface Master {
         void deleteItem(ModelItem item);
         void loadItems();
         void reloadItems();
+        void setDatabaseValidity(boolean valid);
         String getErrorMessage();
     }
 
@@ -80,6 +82,7 @@ public interface Master {
      * Required PRESENTER methods available to MODEL
      */
     interface ModelToPresenter {
+        Context getManagedContext();
         void onErrorDeletingItem(ModelItem item);
         void onLoadItemsTaskFinished(List<ModelItem> items);
         void onLoadItemsTaskStarted();

@@ -25,7 +25,10 @@ public class MasterPresenter extends GenericPresenter
     private boolean hideToolbar;
     private ModelItem selectedItem;
     private ModelItem itemToDelete;
+    //private boolean hideContent;
     //private boolean hideProgress;
+
+
 
     /**
      * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
@@ -56,19 +59,14 @@ public class MasterPresenter extends GenericPresenter
      */
     @Override
     public void onResume(Master.PresenterToView view) {
-        Log.d(TAG, "calling onResume()");
+        Log.d(TAG, "calling onResume() method");
         setView(view);
+        Log.d(TAG, "calling resumingMasterScreen() method");
 
-        // Debe llamarse cada vez que se reinicia el maestro para actualizar su estado
-        // pero cuando es por un giro de pantalla ya que, en este caso,
-        // el estado se conserva internamente
         if(!configurationChangeOccurred()) {
-            Log.d(TAG, "calling resumingMasterScreen()");
             Mediator app = (Mediator) getView().getApplication();
+            // Debe llamarse cada vez que se reinicia el maestro para actualizar su estado
             app.resumingMasterScreen(this);
-
-        } else {
-            onResumingContent();
         }
     }
 
@@ -78,7 +76,7 @@ public class MasterPresenter extends GenericPresenter
      */
     @Override
     public void onBackPressed() {
-        Log.d(TAG, "calling onResume()");
+        Log.d(TAG, "calling onResume() method");
     }
 
     /**
@@ -91,10 +89,11 @@ public class MasterPresenter extends GenericPresenter
      */
     @Override
     public void onDestroy(boolean isChangingConfiguration) {
-        Log.d(TAG, "calling onDestroy()");
+        Log.d(TAG, "calling onDestroy() method");
         super.onDestroy(isChangingConfiguration);
+
+        // Si giramos la pantalla debemos fijar si la barra de tareas será visible o no
         if(isChangingConfiguration) {
-            // Si giramos la pantalla debemos fijar si la barra de tareas será visible o no
             hideToolbar = !hideToolbar;
         }
     }
@@ -174,11 +173,9 @@ public class MasterPresenter extends GenericPresenter
         // de ser el caso, se actualiza el mismo. Aquí, la única posibilidad es el borrado de
         // uno de los elementos de la lista
         if(itemToDelete != null) {
-            Log.d(TAG, "calling deleteItem()");
+            Log.d(TAG, "calling deleteItem() method");
             getModel().deleteItem(itemToDelete);
         }
-
-        getModel().loadItems();
     }
 
     /**
@@ -201,7 +198,7 @@ public class MasterPresenter extends GenericPresenter
      */
     @Override
     public void onScreenStarted() {
-        Log.d(TAG, "calling onScreenStarted()");
+        Log.d(TAG, "calling onScreenStarted() method");
         // Comprobamos si debemos mostrar o no la barra de tareas en función
         // de la orientación actúal de la pantalla
         int screenOrientation = getActivityContext().getResources().getConfiguration().orientation;
@@ -210,8 +207,11 @@ public class MasterPresenter extends GenericPresenter
         } else {
             hideToolbar = false;
         }
+    }
 
-        getModel().loadItems();
+    @Override
+    public void setDatabaseValidity(boolean valid) {
+        getModel().setDatabaseValidity(valid);
     }
 
     @Override
@@ -231,14 +231,14 @@ public class MasterPresenter extends GenericPresenter
     @Override
     public void onItemClicked(ModelItem item) {
         selectedItem = item;
-        Log.d(TAG, "calling goToDetailScreen()");
+        Log.d(TAG, "calling goToDetailScreen() method");
 
         // Al haber hecho click en uno de los elementos de la lista del maestro es necesario
         // arrancar el detalle pasándole el estado inicial correspondiente que, en este caso,
         // es el item seleccionado. Será el mediador quien se encargue de obtener este estado
         // desde el maestro y pasarselo al detalle
         Navigator app = (Navigator) getView().getApplication();
-        //app.goToDetailScreen(this);
+        app.goToDetailScreen(this);
     }
 
 
@@ -248,7 +248,7 @@ public class MasterPresenter extends GenericPresenter
      */
     @Override
     public void onRestoreActionClicked() {
-        Log.d(TAG, "calling reloadItems()");
+        Log.d(TAG, "calling reloadItems() method");
         // Llamado para restaurar el contenido inicial de la lista y su funcionamiento es
         // semejante al encargado de cargar los datos la primera vez
         getModel().reloadItems();
@@ -261,7 +261,7 @@ public class MasterPresenter extends GenericPresenter
      */
     @Override
     public void onResumingContent() {
-        Log.d(TAG, "calling loadItems()");
+        Log.d(TAG, "calling loadItems() method");
         // Si la tarea para la obtención del contenido de la lista ha finalizado,
         // el contenido estará disponible inmediatamente, sino habrá que esperar su finalización.
         // En cualquier caso, el presentador será notificado desde el modelo
@@ -276,7 +276,7 @@ public class MasterPresenter extends GenericPresenter
             if (hideToolbar) {
                 getView().hideToolbar();
             }
-           /* if (hideProgress) {
+            /*if (hideProgress) {
                 getView().hideProgress();
             } else {
                 getView().showProgress();
