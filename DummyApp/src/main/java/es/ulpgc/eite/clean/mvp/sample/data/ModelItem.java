@@ -1,15 +1,25 @@
-package es.ulpgc.eite.clean.mvp.sample.app;
+package es.ulpgc.eite.clean.mvp.sample.data;
 
 
-public class ModelItem {
+import io.realm.RealmObject;
+
+
+
+public class ModelItem extends RealmObject{
 
     private String id;
-    private String title;
+    private String content;
     private String details;
 
-    public ModelItem(String id, String title, String details) {
+    public ModelItem() {
+        this.id = null;
+        this.content = null;
+        this.details = null;
+    }
+
+    public ModelItem(String id, String content, String details) {
         this.id = id;
-        this.title = title;
+        this.content = content;
         this.details = details;
     }
 
@@ -29,17 +39,17 @@ public class ModelItem {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getContent() {
+        return content;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     @Override
     public String toString() {
-        return title;
+        return content;
     }
 
     @Override

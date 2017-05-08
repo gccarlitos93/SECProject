@@ -1,5 +1,6 @@
 package es.ulpgc.eite.clean.mvp.sample.app;
 
+import es.ulpgc.eite.clean.mvp.sample.detail.Detail;
 import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
 import es.ulpgc.eite.clean.mvp.sample.filter.Filter;
 import es.ulpgc.eite.clean.mvp.sample.main.Main;
@@ -11,5 +12,6 @@ public interface Mediator {
   void startingFilterScreen(Filter.MainToFilter presenter);
   void startingMasterScreen(Master.ToMaster presenter);
   void resumingMasterScreen(Master.DetailToMaster presenter);
+  void startingDetailScreen(Detail.MasterToDetail presenter);
 
 }
