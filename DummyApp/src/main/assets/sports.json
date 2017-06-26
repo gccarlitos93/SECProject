@@ -1,52 +1,31 @@
 [
   {
     "id": 1,
-    "name": "Campeonato de Tenis",
-    "month": "Mar",
-    "day": 5,
-    "year": 2017
+    "name": "Atletismo"
   },
   {
     "id": 2,
-    "name": "Torneo de Futbol Juvenil ",
-    "month": "Mar",
-    "day": 12,
-    "year": 2017
+    "name": "Boxeo"
   },
   {
     "id": 3,
-    "name": "Evento Benefico Golf",
-    "month": "Mar",
-    "day": 15,
-    "year": 2017
+    "name": "Ciclismo"
   },
   {
     "id": 4,
-    "name": "Tenis Primavera",
-    "month": "Mar",
-    "day": 25,
-    "year": 2017
+    "name": "Futbol"
   },
   {
     "id": 5,
-    "name": "Boxeo Apertura Verano",
-    "month": "Jun",
-    "day": 25,
-    "year": 2017
+    "name": "Golf"
   },
   {
     "id": 6,
-    "name": "Clásico Juvenil Futbol",
-    "month": "Jul",
-    "day": 15,
-    "year": 2017
+    "name": "Natacion"
   },
   {
     "id": 7,
-    "name": "Toreno de Golf Senior",
-    "month": "Jul",
-    "day": 25,
-    "year": 2017
+    "name": "Tenis"
   }
 ]
        
